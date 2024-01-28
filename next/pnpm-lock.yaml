@@ -23,6 +23,9 @@ dependencies:
   remark-rehype:
     specifier: ^11.1.0
     version: 11.1.0
+  unified:
+    specifier: ^11.0.4
+    version: 11.0.4
 
 devDependencies:
   '@types/node':
