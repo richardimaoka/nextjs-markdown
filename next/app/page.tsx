@@ -1,3 +1,5 @@
+"use client";
+
 import { Fragment, createElement, useEffect, useState } from "react";
 import * as prod from "react/jsx-runtime";
 import rehypeParse from "rehype-parse";
@@ -14,7 +16,7 @@ const text = `<h2>Hello, world!</h2>
  * @param {string} text
  * @returns {JSX.Element}
  */
-function useProcessor(text) {
+function useProcessor(text: string) {
   const [Content, setContent] = useState(createElement(Fragment));
 
   useEffect(
@@ -34,6 +36,6 @@ function useProcessor(text) {
   return Content;
 }
 
-export default function App() {
+export default function Page() {
   return useProcessor(text);
 }
