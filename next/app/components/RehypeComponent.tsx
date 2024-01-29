@@ -1,4 +1,5 @@
 import * as prod from "react/jsx-runtime";
+import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import rehypeReact from "rehype-react";
@@ -23,6 +24,7 @@ export async function RehypeComponent(props: Props) {
 
   const file = await unified()
     .use(remarkParse)
+    .use(remarkGfm)
     .use(remarkRehype)
     .use(rehypeReact, { ...production, components: customComponents })
     .process(props.markdownText);
