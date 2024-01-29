@@ -15,7 +15,7 @@ interface Props {
   markdownText: string;
 }
 
-export async function RehypeComponent(props: Props) {
+export async function RehypeServerComponent(props: Props) {
   // Custom React component mappings
   const customComponents: Partial<Components> = {
     code: CustomElementCode,

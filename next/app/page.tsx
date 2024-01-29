@@ -1,4 +1,4 @@
-import { RehypeComponent } from "./components/RehypeComponent";
+import { RehypeServerComponent } from "./components/RehypeServerComponent";
 import * as fs from "fs/promises";
 
 export default async function Page() {
@@ -6,5 +6,5 @@ export default async function Page() {
     process.cwd() + "/app/sample.md",
     "utf-8"
   );
-  return <RehypeComponent markdownText={markdownText} />;
+  return <RehypeServerComponent markdownText={markdownText} />;
 }
