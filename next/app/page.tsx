@@ -1,8 +1,9 @@
 import { RehypeComponent } from "./components/RehypeComponent";
 
-const text = `<h2>Hello, world!</h2>
-<p>Welcome to my page 👀</p>`;
+const text = `# A first-level heading
+## A second-level heading
+### A third-level heading`;
 
 export default function Page() {
-  return <RehypeComponent htmlText={text} />;
+  return <RehypeComponent markdownText={text} />;
 }
