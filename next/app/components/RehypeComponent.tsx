@@ -1,6 +1,3 @@
-"use client";
-
-import { Fragment, createElement, useEffect, useState } from "react";
 import * as prod from "react/jsx-runtime";
 import rehypeParse from "rehype-parse";
 import rehypeReact from "rehype-react";
@@ -13,22 +10,11 @@ interface Props {
   htmlText: string;
 }
 
-export function RehypeComponent(props: Props) {
-  const [Content, setContent] = useState(createElement(Fragment));
+export async function RehypeComponent(props: Props) {
+  const file = await unified()
+    .use(rehypeParse, { fragment: true })
+    .use(rehypeReact, production)
+    .process(props.htmlText);
 
-  useEffect(
-    function () {
-      (async function () {
-        const file = await unified()
-          .use(rehypeParse, { fragment: true })
-          .use(rehypeReact, production)
-          .process(props.htmlText);
-
-        setContent(file.result);
-      })();
-    },
-    [props.htmlText]
-  );
-
-  return Content;
+  return file.result;
 }
