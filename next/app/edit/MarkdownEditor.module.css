@@ -1,0 +1,25 @@
+.component {
+  display: flex;
+  column-gap: 20px;
+
+  max-height: 100svh;
+  overflow-y: hidden;
+}
+
+.left {
+  flex-basis: 50%;
+
+  /* To set this parent height = children height */
+  display: flex;
+}
+
+.right {
+  overflow-y: auto;
+
+  flex-basis: 50%;
+}
+
+.textarea {
+  width: 100%;
+  height: 100%;
+}
