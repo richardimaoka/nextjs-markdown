@@ -19,16 +19,15 @@ interface Props {
 }
 
 export function RehypeClientComponent(props: Props) {
-  console.log("RehypeClientComponent");
-  // Custom React component mappings
-  const customComponents: Partial<Components> = {
-    code: CustomElementCode,
-    pre: CustomElementPre,
-  };
-
   const [Content, setContent] = useState(createElement(Fragment));
 
   useEffect(() => {
+    // Custom React component mappings
+    const customComponents: Partial<Components> = {
+      code: CustomElementCode,
+      pre: CustomElementPre,
+    };
+
     (async function () {
       const file = await unified()
         .use(remarkParse)
