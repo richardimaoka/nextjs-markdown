@@ -3,6 +3,7 @@ import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import rehypeReact from "rehype-react";
 import { unified } from "unified";
+import { CustomElementCode } from "./CustomElementCode";
 
 // @ts-expect-error: the react types are missing.
 const production = { Fragment: prod.Fragment, jsx: prod.jsx, jsxs: prod.jsxs };
@@ -12,10 +13,15 @@ interface Props {
 }
 
 export async function RehypeComponent(props: Props) {
+  // Custom React component mappings
+  const customComponents = {
+    code: CustomElementCode,
+  };
+
   const file = await unified()
     .use(remarkParse)
     .use(remarkRehype)
-    .use(rehypeReact, production)
+    .use(rehypeReact, { ...production, components: customComponents })
     .process(props.markdownText);
 
   return file.result;
